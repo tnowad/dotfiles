@@ -1,3 +1,22 @@
 #!/bin/bash
 
 echo "Performing purge..."
+
+APPS_DIR="./apps"
+STOW=$(command -v stow 2>/dev/null)
+
+purge_apps() {
+	local apps=()
+	while IFS= read -r -d '' app; do
+		apps+=("$(basename "$app")")
+	done < <(find "$APPS_DIR" -mindepth 1 -maxdepth 1 -type d -print0)
+
+	for app in "${apps[@]}"; do
+		echo "Purging $app..."
+		"$STOW" --dir="$APPS_DIR" --target="$HOME" --delete "$app"
+	done
+}
+
+purge_apps
+
+echo "Purge complete."
