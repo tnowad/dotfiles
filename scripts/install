@@ -1,3 +1,22 @@
 #!/bin/bash
 
 echo "Performing installation..."
+
+APPS_DIR="./apps"
+STOW=$(command -v stow 2>/dev/null)
+
+install_apps() {
+	local apps=()
+	while IFS= read -r -d '' app; do
+		apps+=("$(basename "$app")")
+	done < <(find "$APPS_DIR" -mindepth 1 -maxdepth 1 -type d -print0)
+
+	for app in "${apps[@]}"; do
+		echo "Installing $app..."
+		"$STOW" --dir="$APPS_DIR" --target="$HOME" "$app"
+	done
+}
+
+install_apps
+
+echo "Installation complete."
