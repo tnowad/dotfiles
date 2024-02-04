@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Get memory information
+mem_info=$(free -h | awk 'NR==2{printf "%s/%s", $3, $2}')
+
+# Nerd Font icons
+icon_used="󰍛"  # Icon for used memory
+icon_total="" # Icon for total memory
+
+# Output
+echo "$icon_used $mem_info $icon_total"
