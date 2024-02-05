@@ -1,3 +1,5 @@
 #!/bin/bash
 
 echo "Performing post-setup..."
+
+chsh -s /bin/fish
