@@ -1,3 +1,36 @@
 #!/bin/bash
 
 echo "Performing setup..."
+
+package_installed() {
+	pacman -Q "$1" &>/dev/null
+}
+
+if ! package_installed rustup; then
+	sudo pacman -S --noconfirm rustup
+fi
+
+if ! rustup --version &>/dev/null; then
+	rustup default stable
+fi
+
+if ! package_installed paru; then
+	cd /tmp || exit
+	git clone https://aur.archlinux.org/paru.git
+	cd paru || exit
+	makepkg -si --noconfirm
+fi
+
+if ! package_installed neovim; then
+	sudo pacman -S --noconfirm neovim
+fi
+
+if ! ttf-jetbrains-mono neovim; then
+	sudo pacman -S --noconfirm ttf-jetbrains-mono
+fi
+
+if ! ttf-noto-nerd neovim; then
+	sudo pacman -S --noconfirm ttf-noto-nerd
+fi
+
+echo "Setup complete."
