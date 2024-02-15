@@ -29,7 +29,7 @@ make setup
 
 Make sure you have the following dependencies installed on your system:
 
-- `bash``: The scripts are written in Bash, so ensure that Bash is installed on
+- `bash`: The scripts are written in Bash, so ensure that Bash is installed on
   your system.
 - `git`: The setup script clones repositories from GitHub, so Git must be
   installed.
