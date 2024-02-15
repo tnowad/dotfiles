@@ -6,31 +6,51 @@ package_installed() {
 	pacman -Q "$1" &>/dev/null
 }
 
-if ! package_installed rustup; then
-	sudo pacman -S --noconfirm rustup
-fi
+install_package() {
+	if ! package_installed "$1"; then
+		sudo pacman -S --noconfirm "$1" || exit 1
+	fi
+}
 
-if ! rustup --version &>/dev/null; then
-	rustup default stable
-fi
+install_rustup() {
+	if ! package_installed rustup; then
+		sudo pacman -S --noconfirm rustup || exit 1
+	fi
+	if ! rustup --version &>/dev/null; then
+		rustup default stable || exit 1
+	fi
+}
 
-if ! package_installed paru; then
-	cd /tmp || exit
-	git clone https://aur.archlinux.org/paru.git
-	cd paru || exit
-	makepkg -si --noconfirm
-fi
+install_paru() {
+	if ! package_installed paru; then
+		cd /tmp || exit 1
+		git clone https://aur.archlinux.org/paru.git || exit 1
+		cd paru || exit 1
+		makepkg -si --noconfirm || exit 1
+	fi
+}
 
-if ! package_installed neovim; then
-	sudo pacman -S --noconfirm neovim
-fi
+packages=(
+	"neovim"
+	"ttf-jetbrains-mono"
+	"ttf-noto-nerd"
+	"fish"
+	"i3"
+	"i3blocks"
+	"kitty"
+	"lazygit"
+	"picom"
+	"rofi"
+	"tmux"
+	"ripgrep"
+	"fd"
+)
 
-if ! ttf-jetbrains-mono neovim; then
-	sudo pacman -S --noconfirm ttf-jetbrains-mono
-fi
+install_rustup
+install_paru
 
-if ! ttf-noto-nerd neovim; then
-	sudo pacman -S --noconfirm ttf-noto-nerd
-fi
+for package in "${packages[@]}"; do
+	install_package "$package"
+done
 
 echo "Setup complete."
