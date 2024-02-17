@@ -44,6 +44,9 @@ tiling_drag modifier titlebar
 # Mouse
 focus_follows_mouse no
 
+# Window
+for_window [all] title_window_icon padding 3px 
+
 # Terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
