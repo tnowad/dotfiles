@@ -8,8 +8,6 @@ if status is-interactive
     set -g fish_greeting
 end
 
-# tabtab source for packages
-[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
 
 # Jenv
 eval set -gx PATH '/home/tnowad/.jenv/shims' $PATH
@@ -31,7 +29,16 @@ function jenv
     end
 end
 
+# PNPM setup
+if not type -q pnpm
+    npm install -g pnpm
+    pnpm setup
+    pnpm install-completion fish
+end
+
 set -gx PNPM_HOME "/home/tnowad/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
     set -gx PATH "$PNPM_HOME" $PATH
 end
+
+[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
