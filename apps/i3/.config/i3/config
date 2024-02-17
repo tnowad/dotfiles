@@ -46,6 +46,7 @@ focus_follows_mouse no
 
 # Window
 for_window [all] title_window_icon padding 3px 
+for_window [floating] border normal 5
 
 # Terminal
 bindsym $mod+Return exec i3-sensible-terminal
