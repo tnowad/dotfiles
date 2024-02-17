@@ -41,6 +41,9 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 floating_modifier $mod
 tiling_drag modifier titlebar
 
+# Mouse
+focus_follows_mouse no
+
 # Terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
