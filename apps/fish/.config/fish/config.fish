@@ -5,6 +5,7 @@ if not functions -q fisher
 end
 
 if status is-interactive
+    set -g fish_greeting
 end
 
 # tabtab source for packages
