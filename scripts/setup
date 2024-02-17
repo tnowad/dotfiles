@@ -47,9 +47,15 @@ packages=(
 	"feh"
 	"bottom"
 )
+install_tpm() {
+	if [ ! -e "$HOME/.config/tmux/plugins/tmux" ]; then
+		git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	fi
+}
 
 install_rustup
 install_paru
+install_tpm
 
 for package in "${packages[@]}"; do
 	install_package "$package"
