@@ -13,12 +13,6 @@ label=
 color=#cad3f5
 interval=10
 
-[cpu_usage]
-command=$SCRIPT_DIR/cpu_usage/cpu_usage
-interval=10
-label=
-color=#91d7e3
-
 [brightness]
 command=$SCRIPT_DIR/brightness/brightness
 color=#b7bdf8
