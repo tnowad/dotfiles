@@ -1,3 +1,12 @@
 #!/bin/bash
 
-cat /sys/class/power_supply/BAT0/capacity
+BAT=$(cat /sys/class/power_supply/BAT0/capacity)
+BAT_STATUS=$(cat /sys/class/power_supply/BAT0/status)
+
+# the 1st line updates the full_text;
+# the 2nd line updates the short_text;
+# the 3rd line updates the color;
+# the 4th line updates the background.
+
+echo "$BAT%"
+echo "Battery: $BAT"
