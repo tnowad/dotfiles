@@ -200,7 +200,7 @@ bar {
     mode hide
     hidden_state hide
     modifier $mod
-    position top
+    position bottom
     tray_padding 4
     separator_symbol ""
     font pango:JetBrainsMono 8
