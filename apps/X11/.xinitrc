@@ -7,6 +7,7 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 GPG_TTY=$(tty)
 export GPG_TTY
+export PATH="$PATH:$HOME/.local/bin"
 
 # merge in defaults and keymaps
 
