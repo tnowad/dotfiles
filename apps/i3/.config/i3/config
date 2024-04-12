@@ -27,6 +27,23 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +2%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 2%-
 
+# # F1
+# bindsym XF86AudioMute exec --no-startup-id i3-nagbar -m "key XF86AudioMute press"
+# # F2
+# bindsym XF86AudioLowerVolume exec --no-startup-id i3-nagbar -m "key XF86AudioLowerVolume press"
+# # F3
+# bindsym XF86AudioRaiseVolume exec --no-startup-id i3-nagbar -m "key XF86AudioRaiseVolume press"
+# # F4
+# bindsym XF86MonBrightnessDown exec --no-startup-id i3-nagbar -m "key XF86MonBrightnessDown press"
+# # F5
+# bindsym XF86MonBrightnessUp exec --no-startup-id i3-nagbar -m "key XF86MonBrightnessUp press"
+# # F6
+# bindsym XF86TouchpadToggle exec --no-startup-id i3-nagbar -m "key XF86TouchpadToggle press"
+# # F10
+# bindsym XF86WebCam exec --no-startup-id i3-nagbar -m "key XF86WebCam press"
+# # F12
+# bindsym XF86Launch1 exec --no-startup-id i3-nagbar -m "key XF86Launch1 press"
+
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
 bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
