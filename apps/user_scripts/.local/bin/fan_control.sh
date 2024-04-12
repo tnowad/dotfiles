@@ -18,8 +18,11 @@ set_fan_speed() {
 	off) new_value=2 ;;
 	toggle)
 		current_value=$(<"$FILE")
-		# HACK: The fan speed is toggled between 0 and 2
-		new_value=$(((current_value + 2) % 4))
+		if [ "$current_value" -eq 0 ]; then
+			new_value=2
+		else
+			new_value=0
+		fi
 		;;
 	*)
 		echo "Invalid command: $1"
@@ -28,14 +31,12 @@ set_fan_speed() {
 		;;
 	esac
 	echo "$new_value" | sudo tee "$FILE" >/dev/null
-	echo "Fan speed set to: $(($new_value == 0 ? "High" : "Low"))"
+	if [ "$new_value" -eq 0 ]; then
+		echo "Fan speed set to: High"
+	else
+		echo "Fan speed set to: Low"
+	fi
 }
-
-if [ "$#" -ne 1 ]; then
-	echo "Error: Incorrect number of arguments"
-	help_function
-	exit 1
-fi
 
 case "$1" in
 -h | --help)
