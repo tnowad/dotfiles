@@ -42,4 +42,6 @@ fi
 
 picom &
 ibus-daemon -rxRd &
-exec i3
+statusbar -d &
+pulseaudio --start &
+exec dwm
