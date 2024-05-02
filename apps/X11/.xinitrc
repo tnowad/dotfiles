@@ -44,4 +44,5 @@ picom &
 ibus-daemon -rxRd &
 statusbar -d &
 pulseaudio --start &
+feh --bg-fill --randomize ~/wallpapers/* &
 exec dwm

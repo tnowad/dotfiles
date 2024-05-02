@@ -13,4 +13,4 @@ configuration{
     sidebar-mode: true;
 }
 
-@theme "./themes/catppuccin.rasi"
+@theme "./themes/minimal.rasi"
