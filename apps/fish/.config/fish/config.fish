@@ -24,5 +24,6 @@ if not string match -q -- $PNPM_HOME $PATH
 end
 
 export EDITOR="nvim"
+source "$HOME/.cargo/env.fish"
 
 [ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
