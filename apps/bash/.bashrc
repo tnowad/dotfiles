@@ -1,5 +1,12 @@
 #!/bin/bash
 
+export PATH="/usr/lib/ccache/bin${PATH:+:}${PATH}"
+export CCACHE_DIR="/var/cache/ccache"
+
+export RUSTC_WRAPPER="/usr/bin/sccache"
+export SCCACHE_DIR="/var/cache/sccache"
+export SCCACHE_MAX_FRAME_LENGTH="104857600"
+
 HISTSIZE=1000
 HISTFILESIZE=1000
 

@@ -23,6 +23,11 @@ if not string match -q -- $PNPM_HOME $PATH
     set -gx PATH "$PNPM_HOME" $PATH
 end
 
+export CCACHE_DIR="/var/cache/ccache"
+export RUSTC_WRAPPER="/usr/bin/sccache"
+export SCCACHE_DIR="/var/cache/sccache"
+export SCCACHE_MAX_FRAME_LENGTH="104857600"
+
 export EDITOR="nvim"
 source "$HOME/.cargo/env.fish"
 
