@@ -23,13 +23,13 @@ mem() {
 }
 
 wlan() {
-	wifi_status=$(nmcli -t -f DEVICE,STATE dev | grep wlan | cut -d':' -f2)
-	if [ "$wifi_status" == "connected" ]; then
-		wifi_name=$(nmcli -t -f NAME connection show --active | tr '\n' ' ')
-		printf "   %s" "$wifi_name"
-	else
-		printf "   Not connected"
-	fi
+    wifi_status=$(iwctl station wlan0 show | grep "State" | awk '{print $2}')
+    if [ "$wifi_status" == "connected" ]; then
+        wifi_name=$(iwctl station wlan0 show | grep "Connected network" | awk '{print $3}')
+        printf "   %s" "$wifi_name"
+    else
+        printf "   Not connected"
+    fi
 }
 
 volume() {
