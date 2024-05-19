@@ -30,7 +30,7 @@ set_fan_speed() {
 		exit 1
 		;;
 	esac
-	echo "$new_value" | sudo tee "$FILE" >/dev/null
+	echo "$new_value" | tee "$FILE" >/dev/null
 	if [ "$new_value" -eq 0 ]; then
 		echo "Fan speed set to: High"
 	else
