@@ -1,0 +1,60 @@
+#!/bin/bash
+
+CPU_TEMP_FILE="/sys/class/thermal/thermal_zone0/temp"
+
+HIGH_TEMP=60
+
+get_cpu_temp() {
+    local temp=$(cat "$CPU_TEMP_FILE")
+    echo "scale=2; $temp/1000" | bc
+}
+
+adjust_fan_speed() {
+    local temp=$(get_cpu_temp)
+
+    if (( $(echo "$temp > $HIGH_TEMP" | bc -l) )); then
+        set_fan_speed high
+    else
+        set_fan_speed low
+    fi
+}
+
+set_fan_speed() {
+    local speed=$1
+
+    case "$speed" in
+        high)
+            fanctl high
+            ;;
+        low)
+            fanctl low
+            ;;
+        *)
+            echo "Error: Invalid fan speed: $speed"
+            exit 1
+            ;;
+    esac
+}
+
+main() {
+    local action=$1
+
+    case "$action" in
+        start)
+            while true; do
+                adjust_fan_speed
+                sleep 30
+            done
+            ;;
+        stop)
+            set_fan_speed low
+            ;;
+        *)
+            echo "Usage: $0 [start|stop]"
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"
+
