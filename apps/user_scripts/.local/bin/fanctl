@@ -5,21 +5,21 @@ FAN_HIGH=0
 FAN_LOW=2
 
 display_help() {
-  echo "Usage: $0 [-h] [on|off|toggle]"
+  echo "Usage: $0 [-h] [low|high|toggle]"
   echo "Control the fan speed of your computer."
   echo "Options:"
   echo "  -h, --help      Display this help message"
   echo "Commands:"
-  echo "  on              Turn the fan on (high speed)"
-  echo "  off             Turn the fan off"
-  echo "  toggle          Toggle the fan speed between on and off"
+  echo "  low             Set fan speed to low"
+  echo "  high            Set fan speed to high"
+  echo "  toggle          Toggle the fan speed between low and high"
 }
 
 set_fan_speed() {
   local new_value
   case "$1" in
-    on) new_value=$FAN_HIGH ;;
-    off) new_value=$FAN_LOW ;;
+    low) new_value=$FAN_LOW ;;
+    high) new_value=$FAN_HIGH ;;
     toggle)
       current_value=$(<"$FILE")
       if [ "$current_value" -eq $FAN_HIGH ]; then
@@ -34,7 +34,18 @@ set_fan_speed() {
       exit 1
       ;;
   esac
+
+  if [ ! -w "$FILE" ]; then
+    echo "Error: Cannot write to $FILE. Check file permissions or existence."
+    exit 1
+  fi
+
   echo "$new_value" | tee "$FILE" >/dev/null
+  if [ $? -ne 0 ]; then
+    echo "Error: Failed to set fan speed."
+    exit 1
+  fi
+
   echo "Fan speed set to: $(if [ "$new_value" -eq $FAN_HIGH ]; then echo "High"; else echo "Low"; fi)"
 }
 
@@ -43,7 +54,7 @@ case "$1" in
     display_help
     exit 0
     ;;
-  on | off | toggle)
+  low | high | toggle)
     set_fan_speed "$1"
     ;;
   *)
@@ -51,3 +62,4 @@ case "$1" in
     exit 1
     ;;
 esac
+
