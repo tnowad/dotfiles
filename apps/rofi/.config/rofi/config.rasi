@@ -2,7 +2,7 @@ configuration{
     modi: "run,drun,window,filebrowser";
     icon-theme: "Papirus";
     show-icons: true;
-    terminal: "kitty";
+    terminal: "st";
     drun-display-format: "{icon} {name}";
     location: 0;
     disable-history: false;
@@ -14,3 +14,4 @@ configuration{
 }
 
 @theme "./themes/minimal.rasi"
+
