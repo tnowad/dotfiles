@@ -29,5 +29,4 @@ parse_git_branch() {
 	git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-PS1='[\[\033[32m\]\u@\h \[\033[34m\]\W\[\033[31m\] \t\[\033[36m\]$(parse_git_branch)\[\033[00m\]]\$ '
 . "$HOME/.cargo/env"
