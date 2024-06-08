@@ -5,6 +5,9 @@ if test (tty) = "/dev/tty1"
 end
 
 if status is-interactive
+    if test -z "$TMUX"; and test "$TERM" = "st-256color"
+        exec tmux new-session -A -s main
+    end
 end
 
 if not functions -q fisher
