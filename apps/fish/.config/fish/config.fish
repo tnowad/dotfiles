@@ -1,5 +1,8 @@
 set -g fish_greeting
 
+if test (tty) = "/dev/tty1"
+    exec startx
+end
 
 if status is-interactive
 end
