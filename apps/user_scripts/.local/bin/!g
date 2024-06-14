@@ -1,0 +1,20 @@
+#!/bin/bash
+
+search_github() {
+  local query="$1"
+  xdg-open "https://github.com/search?q=${query}"
+}
+
+if [ -z "$1" ]; then
+  query=$(cat)
+else
+  query="$1"
+fi
+
+if [ -z "$query" ]; then
+  echo "Usage: $0 <search query> or provide input through pipeline"
+  exit 1
+fi
+
+search_github "$query"
+
