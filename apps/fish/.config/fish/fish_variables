@@ -55,4 +55,4 @@ SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
 SETUVAR fish_user_paths:/home/tnowad/\x2epyenv/bin
 SETUVAR nvm_default_packages:pnpm
-SETUVAR nvm_default_version:v22\x2e0\x2e0
+SETUVAR nvm_default_version:v22\x2e3\x2e0
