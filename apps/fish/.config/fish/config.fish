@@ -26,18 +26,19 @@ if not type -q pnpm
     pnpm install-completion fish
 end
 
-set -gx PNPM_HOME "/home/tnowad/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-
-export CCACHE_DIR="/var/cache/ccache"
-export RUSTC_WRAPPER="/usr/bin/sccache"
-export SCCACHE_DIR="/var/cache/sccache"
-export SCCACHE_MAX_FRAME_LENGTH="104857600"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export EDITOR="nvim"
-source "$HOME/.cargo/env.fish"
+export PATH="$PATH:/home/tnowad/.dotnet/tools"
+set PATH "$PATH":"$HOME/.local/scripts/"
 
-[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
+# pnpm
+set -gx PNPM_HOME "/home/tnowad/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
 
+if not test -f ~/.config/fish/completions/pnpm.fish
+  pnpm completion fish > ~/.config/fish/completions/pnpm.fish
+end
+# pnpm end
