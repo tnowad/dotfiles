@@ -1,0 +1,21 @@
+sys-kernel/installkernel grub dracut
+media-libs/gst-plugins-base opengl
+media-libs/harfbuzz icu
+x11-libs/gtk+ wayland
+media-libs/mesa wayland
+media-plugins/gst-plugins-meta X aac alsa mp3 x264 a52 ffmpeg flac ogg opus theora vorbis vpx vaapi
+sys-kernel/gentoo-sources experimental
+dev-db/postgresql -server
+net-dns/dnsmasq script
+net-libs/gnutls pkcs11 tools
+dev-qt/qtgui eglfs
+dev-qt/qtgui eglfs egl
+x11-base/xorg-server xephyr
+app-i18n/ibus -emoji
+media-libs/gst-plugins-base theora
+media-sound/pulseaudio ofono-headset
+media-sound/pulseaudio-daemon ofono-headset
+virtual/wine proton
+gui-libs/wlroots seatd
+media-libs/gst-plugins-bad vaapi
+app-emulation/winetricks gui rar
