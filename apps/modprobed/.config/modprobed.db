@@ -6,6 +6,7 @@ asus_nb_wmi
 asus_wmi
 binfmt_misc
 bluetooth
+bnep
 br_netfilter
 bridge
 btbcm
@@ -14,6 +15,8 @@ btmtk
 btrtl
 btusb
 ccp
+cdc_acm
+cdc_ether
 cec
 cfg80211
 crc32_pclmul
@@ -55,6 +58,7 @@ llc
 mac80211
 mc
 md4
+mii
 mrp
 nf_conntrack
 nf_conntrack_netlink
@@ -72,7 +76,9 @@ platform_profile
 polyval_clmulni
 polyval_generic
 rapl
+rfcomm
 rfkill
+rndis_host
 serio_raw
 sha1_ssse3
 sha256_ssse3
@@ -97,8 +103,10 @@ snd_pci_acp6x
 snd_pci_ps
 snd_pcm
 snd_pcm_dmaengine
+snd_rawmidi
 snd_rn_pci_acp3x
 snd_rpl_pci_acp6x
+snd_seq_device
 snd_soc_acpi
 snd_soc_core
 snd_sof
@@ -110,6 +118,9 @@ snd_sof_pci
 snd_sof_utils
 snd_sof_xtensa_dsp
 snd_timer
+snd_ump
+snd_usb_audio
+snd_usbmidi_lib
 soundcore
 soundwire_amd
 soundwire_bus
@@ -118,6 +129,9 @@ sp5100_tco
 sparse_keymap
 stp
 ttm
+uas
+usb_storage
+usbnet
 uvc
 uvcvideo
 veth
@@ -130,7 +144,9 @@ videobuf2_vmalloc
 videodev
 wmi
 wmi_bmof
+x_tables
 xt_MASQUERADE
 xt_addrtype
 xt_conntrack
 xt_nat
+xt_tcpudp
