@@ -5,6 +5,10 @@
 [core]
 	editor = nvim
 	sshCommand = ssh -i ~/.ssh/id_ed25519
+[diff]
+	tool = nvim
+	algorithm = histogram
+	indentHeuristic = true
 [init]
 	defaultBranch = master
 [commit]
@@ -25,3 +29,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[difftool]
+	prompt = false
+[difftool "nvim"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
