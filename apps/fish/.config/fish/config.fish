@@ -5,7 +5,7 @@ if test (tty) = "/dev/tty1"
 end
 
 if status is-interactive
-    if test -z "$TMUX"; and test "$TERM" = "st-256color"
+    if test -z "$TMUX"; and test "$TERM" = "xterm-kitty"
         exec tmux new-session -A -s main
     end
 end
@@ -29,8 +29,8 @@ end
 export PATH="$HOME/.cargo/bin:$PATH"
 
 export EDITOR="nvim"
-export PATH="$PATH:/home/tnowad/.dotnet/tools"
-set PATH "$PATH":"$HOME/.local/scripts/"
+set -x ANDROID_HOME $HOME/Android/Sdk
+set -x PATH $PATH $HOME/.local/scripts $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
 # pnpm
 set -gx PNPM_HOME "/home/tnowad/.local/share/pnpm"
