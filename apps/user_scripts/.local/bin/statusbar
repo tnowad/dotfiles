@@ -3,60 +3,61 @@
 interval=1
 
 cpu() {
-	cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
-	printf "  %s" "$cpu_val"
+    cpu_val=$(grep -o "^[^ ]*" /proc/loadavg)
+    printf "C:%s " "$cpu_val"
 }
 
 battery() {
-	get_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
-	printf "  %s" "$get_capacity"
+    get_capacity=$(cat /sys/class/power_supply/BAT0/capacity)
+    printf "B:%s%% " "$get_capacity"
 }
 
 brightness() {
-	brightness_val=$(cat /sys/class/backlight/*/brightness)
-	printf "  %s" "$brightness_val"
+    brightness_val=$(cat /sys/class/backlight/*/brightness)
+    printf "Br:%s " "$brightness_val"
 }
 
 mem() {
-	mem_val=$(free -h | awk '/^Mem/ { print $3 }' | sed 's/i//g')
-	printf "  %s" "$mem_val"
+    mem_val=$(free -h | awk '/^Mem/ { print $3 }' | sed 's/i//g')
+    printf "M:%s " "$mem_val"
 }
 
 wlan() {
     wifi_status=$(iwctl station wlan0 show | grep "State" | awk '{print $2}')
     if [ "$wifi_status" == "connected" ]; then
-        wifi_name=$(iwctl station wlan0 show | grep "Connected network" | awk '{print $3}')
-        printf "   %s" "$wifi_name"
+        wifi_name=$(iwctl station wlan0 show | grep "Connected network" | sed 's/\s*Connected network\s*//' | sed 's/[[:space:]]*$//')
+        printf "W:%s " "$wifi_name"
     else
-        printf "   Not connected"
+        printf "W:No "
     fi
 }
 
 volume() {
-	vol=$(pactl list sinks | awk '/Volume:/ { if ($1 == "Volume:") { print $5; exit } }' | tr -d '%')
-	mute=$(pactl list sinks | awk '/Mute:/ { if ($2 == "yes") { print "Muted"; exit } }')
+    vol=$(pactl list sinks | awk '/Volume:/ { if ($1 == "Volume:") { print $5; exit } }' | tr -d '%')
+    mute=$(pactl list sinks | awk '/Mute:/ { if ($2 == "yes") { print "Muted"; exit } }')
 
-	if [ -n "$mute" ]; then
-		printf "  Muted"
-	else
-		printf "   %s%%" "$vol"
-	fi
+    if [ -n "$mute" ]; then
+        printf "V:Mute "
+    else
+        printf "V:%s%% " "$vol"
+    fi
 }
 
 clock() {
-	printf "  %s" "$(date '+%A, %B %d, %Y %H:%M:%S')"
+    printf "T:%s " "$(date '+%A, %B %d, %Y %H:%M:%S')"
 }
 
 update_status() {
-	xsetroot -name "$(battery) $(brightness) $(cpu) $(mem) $(wlan) $(volume) $(clock)"
+    xsetroot -name "$(battery) $(brightness) $(cpu) $(mem) $(wlan) $(volume) $(clock)"
 }
 
 # Check if -d option is provided
-if [[ "$*" == *-d* ]]; then
-	while true; do
-		update_status
-		sleep "$interval"
-	done
+if [[ "$*" == *-s* ]]; then
+    while true; do
+        update_status
+        sleep "$interval"
+    done
 else
-	update_status
+    update_status
 fi
+
