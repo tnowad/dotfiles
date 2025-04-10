@@ -1,66 +1,29 @@
 configuration {
   font: "Iosevka Term 14";
-
-  drun {
-    display-name: "[^.^]";
-  }
-
-  run {
-    display-name: "[°.°]";
-  }
-
-  window {
-    display-name: "[*.*]";
-  }
-
-  filebrowser {
-    display-name: "[>.<]";
-  }
-
-  timeout {
-    delay: 10;
-    action: "kb-cancel";
-  }
+  drun { display-name: "[^.^]"; }
+  timeout { delay: 10; action: "kb-cancel"; }
 }
 
 * {
+  background-color: #000000;
+  text-color: #232323;
   border: 0;
   margin: 0;
   padding: 0;
   spacing: 0;
-
-  bg: #151515;
-  bg-alt: #232323;
-  fg: #FFFFFF;
-  fg-alt: #424242;
-
-  background-color: @bg;
-  text-color: @fg;
 }
 
-window {
-  transparency: "real";
-}
+window { transparency: "real"; }
 
-mainbox {
-  children: [inputbar, listview];
-}
+mainbox { children: [inputbar, listview]; }
+inputbar { children: [prompt, entry]; }
 
-inputbar {
-  children: [prompt, entry];
-}
-
-entry {
-  padding: 12px 0;
-}
-
-prompt {
+prompt, entry {
   padding: 12px;
+  text-color: #ffffff;
 }
 
-listview {
-  lines: 8;
-}
+listview { lines: 8; }
 
 element {
   children: [element-text];
@@ -68,9 +31,7 @@ element {
 
 element-text {
   padding: 12px;
-  text-color: @fg-alt;
+  text-color: #232323;
 }
 
-element-text selected {
-  text-color: @fg;
-}
+element-text selected { text-color: #ffffff; }
