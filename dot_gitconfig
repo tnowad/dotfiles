@@ -1,0 +1,35 @@
+[user]
+	email = tnowad@gmail.com
+	name = Nguyen Minh Tuan
+	signingkey = F02C441751A736706252703A5F8B97FB761CCE94
+[core]
+	editor = nvim
+	sshCommand = ssh -i ~/.ssh/id_ed25519
+[diff]
+	tool = nvim
+	algorithm = histogram
+	indentHeuristic = true
+[init]
+	defaultBranch = master
+[commit]
+	gpgsign = true
+	verbose = true
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[difftool]
+	prompt = false
+[difftool "nvim"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
