@@ -27,6 +27,7 @@ if not type -q pnpm
 end
 
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 export EDITOR="nvim"
 set -x ANDROID_HOME $HOME/Android/Sdk
@@ -36,9 +37,5 @@ set -x PATH $PATH $HOME/.local/scripts $ANDROID_HOME/tools $ANDROID_HOME/platfor
 set -gx PNPM_HOME "/home/tnowad/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
-end
-
-if not test -f ~/.config/fish/completions/pnpm.fish
-  pnpm completion fish > ~/.config/fish/completions/pnpm.fish
 end
 # pnpm end
