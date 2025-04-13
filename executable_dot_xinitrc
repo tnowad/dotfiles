@@ -1,0 +1,12 @@
+#!/bin/sh
+# Load custom keymap
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
+
+# Set env vars from .xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
+
+# Start background services
+pulseaudio --start &
+
+# Start i3
+exec i3

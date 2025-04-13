@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Editor setup
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Input method setup (for fcitx)
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
+# GPG setup
+export GPG_TTY=$(tty)
+
+# Custom paths
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$HOME/.cargo/bin:$HOME/go/bin:$PNPM_HOME:$HOME/.local/bin:$PATH"
