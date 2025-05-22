@@ -5,9 +5,17 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # Input method setup (for fcitx)
+export DefaultIMModule=fcitx
 export GTK_IM_MODULE=fcitx
+export INPUT_METHOD=fcitx
 export QT_IM_MODULE=fcitx
+export SDL_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
+export GLFW_IM_MODULE=ibus
+
+# GTK setup
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export XDG_CURRENT_DESKTOP="KDE"
 
 # GPG setup
 export GPG_TTY=$(tty)

@@ -15,6 +15,7 @@ set $border_color  #222222
 font pango:Iosevka Term 10
 
 # Startup Commands
+exec --no-startup-id fcitx5
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id $term --start-as=fullscreen
 

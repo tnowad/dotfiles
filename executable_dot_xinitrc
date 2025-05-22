@@ -5,6 +5,8 @@
 # Set env vars from .xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
+eval "$(dbus-launch --sh-syntax --exit-with-session)"
+
 # Start background services
 pulseaudio --start &
 
